@@ -1,16 +1,153 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="main">
-    <div class="container">
-        <h1>Welcome to about page</h1>
-        <p></p>
-        <a href="" class="btn">Learn More</a>
-    </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Body Styling */
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+    }
+    
+    /* Navbar Styling */
+    .navbar {
+        background-color: #333;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+    }
+    
+    .navbar h1 {
+        font-size: 2em;
+    }
+    
+    .navbar nav ul {
+        list-style-type: none;
+    }
+    
+    .navbar nav ul li {
+        display: inline;
+        margin: 0 15px;
+    }
+    
+    .navbar nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.1em;
+    }
+    
+    .navbar nav ul li a:hover {
+        text-decoration: underline;
+    }
+    
+    /* About Section Styling */
+    .about {
+        background-color: #fff;
+        padding: 30px;
+        margin: 20px auto;
+        width: 80%;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .about h2 {
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+    
+    .about h3 {
+        margin-top: 20px;
+        font-size: 1.8em;
+        color: #333;
+    }
+    
+    .about p, .about ul {
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: #555;
+    }
+    
+    .about ul {
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+    
+    .about ul li {
+        margin-bottom: 10px;
+    }
+    
+    /* Footer Styling */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 30px;
+    }
+    </style
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About - Kissan Call Centre Visualization and Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1>Kissan Call Centre Project</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <section class="about">
+        <h2>About the Project</h2>
+        <p><strong>Project Overview:</strong> The "Kissan Call Centre Visualization and Analysis" project aims to provide valuable insights into the agricultural concerns of farmers by analyzing data collected from a Kissan (farmer) call centre. The project focuses on visualizing call data such as queries raised by farmers, common issues faced, geographical patterns, and the type of advice provided. Through this project, the goal is to develop a comprehensive understanding of the challenges farmers are facing and how the call centre supports them in resolving these issues.</p>
 
-{% endblock %}
+        <h3>Purpose</h3>
+        <p>The main purpose of this project is to help stakeholders, such as agricultural experts, government organizations, and NGOs, make data-driven decisions that can enhance support for farmers. By visualizing key data, it aims to improve the efficiency of services provided by Kissan Call Centres and aid in the development of better solutions for the agricultural community.</p>
 
-{% block css %}
-{% endblock %}
+        <h3>Objectives</h3>
+        <ul>
+            <li>To analyze call data and identify common issues faced by farmers.</li>
+            <li>To create visual dashboards that can present trends, patterns, and critical insights from the data.</li>
+            <li>To categorize queries and advice given by the call centre based on geographic regions and crop types.</li>
+            <li>To provide recommendations for improving the services of the call centre based on data analysis.</li>
+        </ul>
+
+        <h3>Scope of the Project:</h3>
+        <p>Data analysis of calls made by farmers to the Kissan Call Centre.
+
+            Categorization of calls into different types of agricultural issues such as crop diseases, weather-related concerns, pest control, and general farming advice.
+            
+            Visualization of the data using graphs, charts, and heatmaps to identify trends and patterns.
+            
+            Geographic analysis to understand regional farming issues.</p>
+
+        <h3>Methodology:</h3>
+        <p>Data Collection: The project is based on historical call data from the Kissan Call Centre.
+
+            Data Cleaning and Preprocessing: Raw data is cleaned to remove inconsistencies and categorized into relevant agricultural issues.
+            
+            Data Analysis: Various statistical and analytical techniques are used to extract meaningful insights.
+            
+            Visualization: Interactive dashboards and visualizations (using tools like Tableau or Power BI) are created to display insights in an easily understandable format.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Kissan Call Centre Project. All rights reserved.</p>
+    </footer>
+</body>
+</html>
 

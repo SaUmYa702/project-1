@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .registration-container {
+        width: 50%;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    textarea {
+        resize: vertical;
+        height: 100px;
+    }
+    
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: #fff;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #218838;
+    }
+    </style
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kissan Call Center - Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Kissan Call Center Registration</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Write your query here"></textarea>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>
