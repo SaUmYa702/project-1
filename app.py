@@ -40,5 +40,31 @@ def home():
     return render_template("home.html")
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
-
     
+@app.route("/Crop-Specific Grievance Analysis")
+def crop_specific_grievance_analysis():
+    return render_template("Crop-Specific Grievance Analysis.html")
+
+@app.route("/Natural Language insights")
+def natural_language_insights():
+    return render_template("Natural Language insights.html")
+
+@app.route("/overview")
+def overview():
+    return render_template("overview.html")
+
+@app.route("/Query Types Deep Dive")
+def query_types_deep_dive():
+    return render_template("Query Types Deep Dive.html")
+
+@app.route("/Regional Query Treends")
+def regional_query_trends():
+    return render_template("Regional Query Treends.html")
+
+@app.route("/Sector& Category Trends")
+def sector & Category Trends():
+    return render_template("Sector& Category Trends.html")
+
+@app.route("/Temporal Trends")
+def Temporal Trends():
+    return render_template("Temporal Trends.html")
