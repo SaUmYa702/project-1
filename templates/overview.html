@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8">
+        <!-- Hero Section with Gradient Background -->
+        <div class="bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-lg shadow-lg p-8 mb-12 text-center">
+            <h1 class="text-5xl font-extrabold mb-4">Dashboard Overview</h1>
+            <h2 class="text-2xl mb-4">Purpose</h2>
+            <p class="text-lg mb-6">High-level insights across the entire datasets.</p>
+            
+        </div>
+    
+        <!-- Why This Analysis Section with Icons and Cards -->
+        <section class="mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5v14m-7-7h14"></path></svg>
+                        <h3 class="text-xl font-bold text-gray-700">Insights</h3>
+                    </div>
+                    <p class="text-gray-600">Which Months/Years have high activity?</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                    <h3 class="text-xl font-bold text-gray-700"> Insights</h3>
+                </div>
+                <p class="text-gray-600">What sectors dominate grivances?</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center mb-4">
+                    <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M9 16l-3 3-3-3M15 16l3 3 3-3"></path></svg>
+                    <h3 class="text-xl font-bold text-gray-700">Insights</h3>
+                </div>
+                <p class="text-gray-600">Which districts need more attention?></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Section with Hover Effects -->
+    <section id="analysis" class="bg-gray-50 rounded-lg shadow-lg p-8">
+        <div class="flex justify-center mb-8">
+            {{graph1|safe}}  
+        </div>
+        <div class="flex justify-center mb-8">
+            {{graph2|safe}}  
+        </div>
+        <div class="flex justify-center mb-8">
+            {{graph3|safe}}
+        </div>
+        <div class="flex justify-center mb-8">
+            {{graph4|safe}}
+        </div>
+        <div class="flex justify-center mb-8">
+            {{graph5|safe}}
+        </div>
+        <div class="flex justify-center mb-8">
+            {{graph6|safe}}
+        </div>
+        
+        <div class="flex justify-center mb-8">
+            {{graph7|safe}}
+        </div>
+        
+        <div class="flex justify-center mb-8">
+            {{graph8|safe}}
+        </div>
+    </section>
+   
+    <!-- Insights Section with Icons -->
+    <section class="bg-white rounded-lg shadow-lg p-8 mt-12">
+        <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">Key Insights</h2>
+        <ul class="list-none grid grid-cols-1 md:grid-cols-3 gap-8 text-lg">
+            <li class="flex items-start">
+                <svg class="w-8 h-8 text-green-500 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                <span>Sales grew significantly after 2000, with a major spike during the 2010s.</span>
+            </li>
+            <li class="flex items-start">
+                <svg class="w-8 h-8 text-green-500 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                <span>Older outlets (established in the 1980s) performed worse compared to newer ones.</span>
+            </li>
+            <li class="flex items-start">
+                <svg class="w-8 h-8 text-green-500 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                <span>Economic downturns, especially in the 2000s, led to sharp declines in sales.</span>
+            </li>
+        </ul>
+    </section>
+</div>
+
+
+
+
+    
+    
+</body>
+</html>
