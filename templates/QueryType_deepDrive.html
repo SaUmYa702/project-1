@@ -4,87 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Document</title>
+    <title>Query Type Analysis - FarmEase</title>
 </head>
-<body>
+<body class="bg-gray-50">
+    <!-- New Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="{{ url_for('index') }}" class="text-2xl font-bold text-blue-600">FarmEase</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="{{ url_for('cropspecific') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Crop Analysis</a>
+                        <a href="{{ url_for('QueryType_deepDrive') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Query Type Analysis</a>
+                        <a href="{{ url_for('overview') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Overview Dashboard</a>
+                        <a href="{{ url_for('NaturalLanguageInsights') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Natural Language Insights</a>
+                        <a href="{{ url_for('RegionalqueryTrends') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Regional Analysis</a>
+                        <a href="{{ url_for('SectorCategoryTrends') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Sector Category Trends</a>
+                        <a href="{{ url_for('TemporalTrends') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Temporal Trends</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="container mx-auto px-4 py-8">
         <!-- Hero Section with Gradient Background -->
-        <div class="bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-lg shadow-lg p-8 mb-12 text-center">
-            <h1 class="text-5xl font-extrabold mb-4">QueryType Deep Dive</h1>
-            <h2 class="text-2xl mb-4">Purpose</h2>
-            <p class="text-lg mb-6">See What kond of help farmers are seeking.visuals</p>
-            
+        <div class="bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-lg shadow-lg p-8 mb-12">
+            <h1 class="text-5xl font-extrabold mb-4">Query Type Analysis</h1>
+            <p class="text-xl mb-6">Deep dive into different types of agricultural queries and their patterns</p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
+                <div class="bg-white/10 backdrop-blur-lg rounded-lg p-4">
+                    <h3 class="text-lg font-semibold mb-2">Query Categories</h3>
+                    <p class="text-3xl font-bold">8+</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-lg rounded-lg p-4">
+                    <h3 class="text-lg font-semibold mb-2">Technical Queries</h3>
+                    <p class="text-3xl font-bold">45%</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-lg rounded-lg p-4">
+                    <h3 class="text-lg font-semibold mb-2">Policy Queries</h3>
+                    <p class="text-3xl font-bold">30%</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-lg rounded-lg p-4">
+                    <h3 class="text-lg font-semibold mb-2">General Queries</h3>
+                    <p class="text-3xl font-bold">25%</p>
+                </div>
+            </div>
         </div>
-    
-        <!-- Why This Analysis Section with Icons and Cards -->
-        <section class="mb-16">
-    
+
+        <!-- Key Metrics Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Query Categories</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
-                        <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5v14m-7-7h14"></path></svg>
-                        
+                        <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        <h3 class="text-xl font-bold text-gray-700">Technical Queries</h3>
                     </div>
-                    
+                    <p class="text-gray-600">Analysis of crop management, pest control, and farming techniques</p>
                 </div>
-                <!-- Card 2 -->
-                <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
-                        <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
-                    <h3 class="text-xl font-bold text-gray-700">Insights</h3>
+                        <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <h3 class="text-xl font-bold text-gray-700">Policy Queries</h3>
+                    </div>
+                    <p class="text-gray-600">Questions about government schemes, subsidies, and agricultural policies</p>
                 </div>
-                <p class="text-gray-600">Which types of support(irrigation,fertilizer,pest control) are most sought after?</p>
-            </div>
-            <!-- Card 3 -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center mb-4">
-                    <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M9 16l-3 3-3-3M15 16l3 3 3-3"></path></svg>
-                    
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <h3 class="text-xl font-bold text-gray-700">General Queries</h3>
+                    </div>
+                    <p class="text-gray-600">General farming advice, market information, and resource availability</p>
                 </div>
-                
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Analysis Section with Hover Effects -->
-    <section id="analysis" class="bg-gray-50 rounded-lg shadow-lg p-8">
-        
-        <div class="flex justify-center mb-8">
-            {{graph13|safe}}
+        <!-- Analysis Section -->
+        <section id="analysis" class="bg-white rounded-lg shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Detailed Analysis</h2>
             
-            
-        </div>
-        <div class="flex justify-center mb-8">
-            {{graph14|safe}}
-        </div>
-        
-        
-    </section>
-    <!-- Insights Section with Icons -->
-    <section class="bg-white rounded-lg shadow-lg p-8 mt-12">
-        <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">Key Insights</h2>
-        <ul class="list-none grid grid-cols-1 md:grid-cols-3 gap-8 text-lg">
-            <li class="flex items-start">
-                <svg class="w-8 h-8 text-green-500 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                <span>Sales grew significantly after 2000, with a major spike during the 2010s.</span>
-            </li>
-            <li class="flex items-start">
-                <svg class="w-8 h-8 text-green-500 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                <span>Older outlets (established in the 1980s) performed worse compared to newer ones.</span>
-            </li>
-            <li class="flex items-start">
-                <svg class="w-8 h-8 text-green-500 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                <span>Economic downturns, especially in the 2000s, led to sharp declines in sales.</span>
-            </li>
-        </ul>
-    </section>
-</div>
+            <div class="space-y-12">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Query Type Distribution</h3>
+                    <div class="flex justify-center mb-4">
+                        {{graph13|safe}}
+                    </div>
+                    <p class="text-gray-600 text-center">Distribution of different types of agricultural queries</p>
+                </div>
 
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Query Resolution Analysis</h3>
+                    <div class="flex justify-center mb-4">
+                        {{graph14|safe}}
+                    </div>
+                    <p class="text-gray-600 text-center">Analysis of resolution patterns for different query types</p>
+                </div>
+            </div>
+        </section>
 
-
-
-    
-    
+        <!-- Key Insights Section -->
+        <section class="bg-white rounded-lg shadow-lg p-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Key Insights</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Technical Focus
+                    </h3>
+                    <p class="text-gray-600">Technical queries dominate the dataset, with pest control and crop management being the most common concerns among farmers.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Resolution Patterns
+                    </h3>
+                    <p class="text-gray-600">Technical queries show faster resolution times compared to policy-related queries, indicating a need for streamlined policy information access.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Seasonal Variations
+                    </h3>
+                    <p class="text-gray-600">Query types show distinct seasonal patterns, with technical queries peaking during planting and harvesting seasons.</p>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>

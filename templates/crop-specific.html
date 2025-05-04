@@ -7,84 +7,169 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- New Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="{{ url_for('index') }}" class="text-2xl font-bold text-blue-600">FarmEase</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="{{ url_for('cropspecific') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Crop Analysis</a>
+                        <a href="{{ url_for('QueryType_deepDrive') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Query Type Analysis</a>
+                        <a href="{{ url_for('overview') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Overview Dashboard</a>
+                        <a href="{{ url_for('NaturalLanguageInsights') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Natural Language Insights</a>
+                        <a href="{{ url_for('RegionalqueryTrends') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Regional Analysis</a>
+                        <a href="{{ url_for('SectorCategoryTrends') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Sector Category Trends</a>
+                        <a href="{{ url_for('TemporalTrends') }}" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Temporal Trends</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="container mx-auto px-4 py-8">
         <!-- Hero Section with Gradient Background -->
         <div class="bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-lg shadow-lg p-8 mb-12 text-center">
             <h1 class="text-5xl font-extrabold mb-4">Crop-Specific Grievance Analysis</h1>
             <h2 class="text-2xl mb-4">Purpose</h2>
-            <p class="text-lg mb-6">See which crops are causing the most concerns.Visuals:</p>
-            
+            <p class="text-lg mb-6">Comprehensive analysis of crop-specific issues and trends to identify patterns and optimize agricultural practices.</p>
         </div>
     
+        <!-- Key Metrics Section -->
+        <section class="mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Most Affected Crops</h3>
+                    <p class="text-2xl font-bold text-blue-600">Rice, Wheat</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-green-500">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Common Issues</h3>
+                    <p class="text-2xl font-bold text-green-600">Pest Control, Irrigation</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-yellow-500">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Peak Seasons</h3>
+                    <p class="text-2xl font-bold text-yellow-600">Monsoon, Harvest</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-red-500">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Critical Regions</h3>
+                    <p class="text-2xl font-bold text-red-600">North, Central</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Why This Analysis Section with Icons and Cards -->
         <section class="mb-16">
-           
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Key Insights</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5v14m-7-7h14"></path></svg>
-                        <h3 class="text-xl font-bold text-gray-700">Insights</h3>
+                        <h3 class="text-xl font-bold text-gray-700">Crop-Specific Issues</h3>
                     </div>
-                    <p class="text-gray-600">Identify high-maintenance/problematic crops.</p>
+                    <p class="text-gray-600">Identify high-maintenance crops and their specific challenges. Track patterns in pest control, irrigation, and fertilizer requirements.</p>
                 </div>
                 <!-- Card 2 -->
-                <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
-                    <h3 class="text-xl font-bold text-gray-700"> Insights</h3>
+                        <h3 class="text-xl font-bold text-gray-700">Regional Patterns</h3>
+                    </div>
+                    <p class="text-gray-600">Analyze geographical distribution of crop issues. Identify regions with specific crop-related challenges and their underlying causes.</p>
                 </div>
-                <p class="text-gray-600">Mathch crops with common query types.</p>
+                <!-- Card 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-12 h-12 text-blue-600 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M9 16l-3 3-3-3M15 16l3 3 3-3"></path></svg>
+                        <h3 class="text-xl font-bold text-gray-700">Seasonal Trends</h3>
+                    </div>
+                    <p class="text-gray-600">Track seasonal variations in crop-related issues. Understand how weather patterns and growing seasons affect crop health and yield.</p>
+                </div>
             </div>
-            <!-- Card 3 -->
-            
-               
-        </div>
-    </section>
+        </section>
 
-    <!-- Analysis Section with Hover Effects -->
-    <section id="analysis" class="bg-gray-50 rounded-lg shadow-lg p-8">
-        
-        <div class="flex justify-center mb-8">
-            {{graph9|safe}}
-            
-            
-        </div>
-        <div class="flex justify-center mb-8">
-            {{graph10|safe}}
-        </div>
-        <div class="flex justify-center mb-8">
-            {{graph11|safe}}
-        </div>
-        <div class="flex justify-center mb-8">
-            {{graph12|safe}}
-        </div>            
-        
-    </section>
-    <!-- Insights Section with Icons -->
-    <section class="bg-white rounded-lg shadow-lg p-8 mt-12">
-        <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">Key Insights</h2>
-        <ul class="list-none grid grid-cols-1 md:grid-cols-3 gap-8 text-lg">
-            <li class="flex items-start">
-                <svg class="w-8 h-8 text-green-500 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                <span>Sales grew significantly after 2000, with a major spike during the 2010s.</span>
-            </li>
-            <li class="flex items-start">
-                <svg class="w-8 h-8 text-green-500 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                <span>Older outlets (established in the 1980s) performed worse compared to newer ones.</span>
-            </li>
-            <li class="flex items-start">
-                <svg class="w-8 h-8 text-green-500 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                <span>Economic downturns, especially in the 2000s, led to sharp declines in sales.</span>
-            </li>
-        </ul>
-    </section>
-</div>
+        <!-- Analysis Section with Hover Effects -->
+        <section id="analysis" class="bg-gray-50 rounded-lg shadow-lg p-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Detailed Analysis</h2>
+            <div class="space-y-8">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Crop Distribution Analysis</h3>
+                    <div class="flex justify-center mb-4">
+                        {{graph9|safe}}
+                    </div>
+                    <p class="text-gray-600 text-center">Distribution of grievances across different crops</p>
+                </div>
 
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Issue Type Distribution</h3>
+                    <div class="flex justify-center mb-4">
+                        {{graph10|safe}}
+                    </div>
+                    <p class="text-gray-600 text-center">Types of issues reported for each crop</p>
+                </div>
 
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Seasonal Patterns</h3>
+                    <div class="flex justify-center mb-4">
+                        {{graph11|safe}}
+                    </div>
+                    <p class="text-gray-600 text-center">Monthly distribution of crop-related issues</p>
+                </div>
 
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Regional Analysis</h3>
+                    <div class="flex justify-center mb-4">
+                        {{graph12|safe}}
+                    </div>
+                    <p class="text-gray-600 text-center">Geographical distribution of crop issues</p>
+                </div>
+            </div>
+        </section>
 
-    
-    
+        <!-- Recommendations Section -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mt-12">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Key Recommendations</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-blue-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-4">Immediate Actions</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Implement targeted pest control measures for high-risk crops</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Enhance irrigation systems in drought-prone regions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Develop crop-specific advisory programs</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-green-800 mb-4">Long-term Strategies</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Invest in research for disease-resistant crop varieties</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Establish regional crop monitoring systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Create crop-specific training programs for farmers</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>

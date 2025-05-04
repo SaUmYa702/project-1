@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from werkzeug.utils import secure_filename
 import pandas as pd
 import plotly.express as px
@@ -6,10 +6,45 @@ import plotly.graph_objects as go
 import plotly.io as pio
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-
+import io
+import base64
+from PIL import Image
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+from functools import wraps
 
 app = Flask(__name__)
 app.secret_key = 'supersecretmre'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128))
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+# Create database tables
+with app.app_context():
+    db.create_all()
+
+# Authentication decorator
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user_id' not in session:
+            flash('Please log in to access this page.', 'warning')
+            return redirect(url_for('login'))
+        return f(*args, **kwargs)
+    return decorated_function
 
 # Update the encoding to handle potential decoding issues
 try:
@@ -22,20 +57,60 @@ except UnicodeDecodeError:
 def index():
     return render_template('index.html')
 
-
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        user = User.query.filter_by(username=username).first()
+        
+        if user and user.check_password(password):
+            session['user_id'] = user.id
+            session['username'] = user.username
+            flash('Successfully logged in!', 'success')
+            return redirect(url_for('index'))
+        else:
+            flash('Invalid username or password', 'error')
+    
     return render_template('login.html')
 
-@app.route("/register",methods=["GET", "POST"])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        # Here you would typically save the user to a database
-        flash(f"User {username} registered successfully!", "success")
-        return redirect(url_for("index"))
-    return render_template("register.html")
+    if request.method == 'POST':
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+        
+        if password != confirm_password:
+            flash('Passwords do not match', 'error')
+            return redirect(url_for('register'))
+        
+        if User.query.filter_by(username=username).first():
+            flash('Username already exists', 'error')
+            return redirect(url_for('register'))
+            
+        if User.query.filter_by(email=email).first():
+            flash('Email already registered', 'error')
+            return redirect(url_for('register'))
+        
+        user = User(username=username, email=email)
+        user.set_password(password)
+        
+        db.session.add(user)
+        db.session.commit()
+        
+        flash('Registration successful! Please login.', 'success')
+        return redirect(url_for('login'))
+    
+    return render_template('register.html')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('Successfully logged out!', 'success')
+    return redirect(url_for('index'))
 
 @app.route("/about")
 def about():
@@ -312,26 +387,46 @@ def word_could():
     # Create Word Cloud
     wordcloud_queries = WordCloud(width=800, height=400, background_color='white').generate(text_queries)
 
-    # Plot the word cloud using matplotlib
+    # Convert word cloud to image
     plt.figure(figsize=(10, 5))
     plt.imshow(wordcloud_queries, interpolation='bilinear')
     plt.axis("off")
     plt.title("Word Cloud for Farmers' Queries", fontsize=16)
-   
-
-    # 2. Word Cloud for Responses (KccAns)
-    text_answers = ' '.join(df['KccAns'].dropna())
-
-    # Create Word Cloud for responses
-    wordcloud_answers = WordCloud(width=800, height=400, background_color='white').generate(text_answers)
-
-    # Plot the word cloud using matplotlib
-    plt.figure(figsize=(10, 5))
-    plt.imshow(wordcloud_answers, interpolation='bilinear')
-    plt.axis("off")
-    plt.title("Word Cloud for KCC Answers", fontsize=16)
-    fig27 = plt.gcf()  # Get the current figure to resolve the undefined fig27 issue
-    graph27_html=pio.to_html(fig27, full_html=False)
+    
+    # Save the plot to a bytes buffer
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0)
+    buf.seek(0)
+    
+    # Convert to base64 string
+    img_str = base64.b64encode(buf.read()).decode('utf-8')
+    
+    # Clear matplotlib figure
+    plt.close()
+    
+    # Create Plotly figure with the base64 image
+    fig27 = go.Figure()
+    fig27.add_layout_image(
+        dict(
+            source=f'data:image/png;base64,{img_str}',
+            xref="paper",
+            yref="paper",
+            x=0,
+            y=1,
+            sizex=1,
+            sizey=1,
+            sizing="stretch",
+            opacity=1
+        )
+    )
+    fig27.update_layout(
+        title="Word Cloud for Farmers' Queries",
+        showlegend=False,
+        xaxis=dict(showticklabels=False, showgrid=False, zeroline=False),
+        yaxis=dict(showticklabels=False, showgrid=False, zeroline=False)
+    )
+    
+    graph27_html = pio.to_html(fig27, full_html=False)
     return graph27_html
 
 def sentiment_distribution():
@@ -354,6 +449,7 @@ def sentiment_distribution():
 
 #Analysis Pages
 @app.route('/overview')
+@login_required
 def overview():
     graph1 = total_queries()
     graph2 = top_districts()
@@ -366,6 +462,7 @@ def overview():
     return render_template('overview.html',graph1=graph1,graph2=graph2,graph3=graph3,graph4=graph4,graph5=graph5,graph6=graph6,graph7=graph7,graph8=graph8)
 
 @app.route('/crop-specific')
+@login_required
 def cropspecific():
     graph9 =  Top_crops()
     graph10 = Querytype_crop()
@@ -374,43 +471,32 @@ def cropspecific():
     return render_template('crop-specific.html',graph9=graph9,graph10=graph10,graph11=graph11,graph12=graph12)
 
 @app.route('/QueryType_deepDrive')
+@login_required
 def QueryType_deepDrive():
     graph13 = Mostfriquent_querytype()
     graph14 = query_distribution()
     return render_template('QueryType_deepDrive.html',graph13=graph13,graph14=graph14)
 
 @app.route('/RegionalqueryTrends')
-def Regionalquery_Trends():
-    graph15 = Top20_district()
-    graph16 = querytype_bydistrict()
-    graph17 = timetrend_district()
-    graph18 = Querytype_blockname()
-    graph19 = querytype_districtname()
-    return render_template('RegionalqueryTrends.html',graph15=graph15,graph16=graph16,graph17=graph17,graph18=graph18,graph19=graph19)
-
-
-    graph13 = Mostfriquent_querytype()
-    graph14 = query_distribution()
-    return render_template('QueryType_deepDrive.html',graph13=graph13,graph14=graph14)
-
-@app.route('/Regional_query_Trends')
+@login_required
 def RegionalqueryTrends():
-    graph15 = Top20_district()
-    graph16 = querytype_bydistrict()
-    graph17 = timetrend_district()
-    graph18 = Querytype_blockname()
-    graph19 = querytype_districtname()
-    return render_template('Regional_query_Trends',graph15=graph15,graph16=graph16,graph17=graph17,graph18=graph18,graph19=graph19)
+    graph9 = Top20_district()
+    graph10 = querytype_bydistrict()
+    graph11 = timetrend_district()
+    graph12 = Querytype_blockname()
+    return render_template('RegionalqueryTrends.html', graph9=graph9, graph10=graph10, graph11=graph11, graph12=graph12)
 
 @app.route('/SectorCategoryTrends')
-def sectorCategory_trends():
+@login_required
+def SectorCategoryTrends():
     graph20 = queryby_sector()
     graph21 = category_breakdown()
     graph22 = sector_vsquerytype()
-    return render_template('SectorCategorytrends.html' ,graph20=graph20,graph21=graph21,graph22=graph22)
+    return render_template('SectorCategoryTrends.html', graph20=graph20, graph21=graph21, graph22=graph22)
 
 
 @app.route('/TemporalTrends')
+@login_required
 def TemporalTrends():
     graph23 =  monthly_querytrends()
     graph24 =  yearyquery_count()
@@ -419,6 +505,7 @@ def TemporalTrends():
     return render_template('TemporalTrends.html' ,graph23=graph23,graph24=graph24,graph25=graph25,graph26=graph26)  
 
 @app.route('/NaturalLanguageInsights')  
+@login_required
 def NaturalLanguageInsights():
     graph27 = word_could()
     graph28 =  sentiment_distribution() 
